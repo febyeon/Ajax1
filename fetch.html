@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <article>
+
+    </article>
+    <!--
+    <input type="button" value="fetch" onclick="
+    fetch('css').then(function(response){
+      response.text().then(function(text){
+        alert(text);
+      })
+    })
+    ">
+    -->
+    <input type="button" value="fetch" onclick="
+    fetch('css').then(function(response){
+      response.text().then(function(text){
+        document.querySelector('article').innerHTML = text;
+      })
+    })
+    ">
+    <script>
+    /*
+    fetch API: fetch 실행시키면 웹브라우저한테 파일을 서버에게 응답해달라는 것
+    then: 서버가 적당한 데이터를 꺼내서 응답할 때 시간 걸림.
+          컴퓨터가 뭘 하고 있어야하나?
+          기다리는 시간 동안 괄호 안에 있는 함수를 실행시키기.
+          asynchronous(비동기): 요청이 실행되는 동안 다른 코드들 실행.
+    function callback() == callback = function()
+    response 객체: 웹 브라우저와 웹 서버가 통신할 때
+                   파일을 잘 찾았다고 할 때 200을 알려줌(status 값).
+                   못 찾으면 404.
+    */
+    </script>
+  </body>
+</html>
