@@ -1,4 +1,8 @@
 <!doctype html>
+<!--
+data와 application이 같이 있음.
+data: 바뀔 수 있음. <li>태그.
+-->
 <html>
 <head>
   <title>WEB1 - Welcome</title>
@@ -13,20 +17,23 @@
   nightDayHandler(this);
   ">
     <div id = "grid">
-      <ol>
+      <ol id = "nav">
         <!--
         href="1.html"로 페이지 로드 할 수 있음.
         #: 북마크 기능. 관습적으로 !(bang)를 붙임.
         #!: hash bang
-        -->
+
+        이거를 list파일에 추가
         <li><a href="#!html" onclick="fetch_page('html');">HTML</a></li>
         <li><a href="#!css" onclick="fetch_page('css');">CSS</a></li>
         <li><a href="#!javascript" onclick="fetch_page('javascript');">JavaScript</a></li>
+        -->
       </ol>
       <article>
 
       </article>
       <script>
+      //
       function fetch_page(name){
         fetch(name).then(function(response){
           response.text().then(function(text){
@@ -39,6 +46,22 @@
       } else{
         fetch_page('welcome');
       }
+      fetch('list').then(function(response){
+        response.text().then(function(text){
+          var items = text.split(' ');
+          var i = 0;
+          var tags = '';
+          while(i<items.length){
+            var item = items[i];
+            item = item.trim();
+            var tag = '<li><a href="#!'+item+'" onclick="fetch_page(\''+item+'\')">'+item+'</a></li>';
+            //var tag = `<a href="#!${item}" onclick="fetch_page('${item}')"><li>${item}</li></a>`;
+            tags = tags + tag;
+            i = i + 1;
+          }
+          document.querySelector('#nav').innerHTML = tags;
+        })
+      });
       </script>
       <!--
       <div id="article">
